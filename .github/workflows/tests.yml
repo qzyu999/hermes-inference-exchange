@@ -1,0 +1,33 @@
+name: Plugin tests
+on: [push, pull_request]
+jobs:
+  tests:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/checkout@v4
+        with:
+          repository: qzyu999/inference-exchange
+          ref: 0f0ce6cefd4eff1bd9353cea40677769fbccd824
+          path: .upstream/ie
+      - run: >-
+          python -m pip install
+          "pytest>=8,<10" "pytest-asyncio>=0.24,<2" "websockets>=13,<14"
+          "pydantic>=2.9,<3" "pynacl>=1.5,<2" "cryptography>=43,<47"
+      - run: python -m pytest tests -q
+        env:
+          IE_REFERENCE_REPO: ${{ github.workspace }}/.upstream/ie
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: NousResearch/hermes-agent/.github/actions/plugin-validate@v0.23.0
+        with:
+          path: .
+          hermes-ref: v0.23.0
