@@ -1,0 +1,59 @@
+name: inference-exchange
+version: "0.1.0"
+description: Serve local IE models while Hermes CLI is idle.
+author: qzyu999
+requires_hermes: ">=0.23.0"
+provides_tools: []
+provides_hooks:
+  - on_session_start
+  - pre_llm_call
+  - post_llm_call
+  - on_session_end
+  - on_session_finalize
+provides_middleware: []
+requires_env: []
+config_schema:
+  sell_enabled:
+    type: boolean
+    default: false
+    description: Allow this plugin to start a local provider.
+  idle_minutes:
+    type: number
+    default: 5
+    description: Wait this many minutes after a turn ends.
+  drain_seconds:
+    type: number
+    default: 8
+    description: Maximum total wait before user work proceeds.
+  startup_seconds:
+    type: number
+    default: 180
+    description: Maximum provider startup wait.
+  coordinator:
+    type: string
+    default: ws://localhost:8000/ws/provider
+    description: Provider WebSocket endpoint. Use wss outside loopback.
+  ie_python:
+    type: string
+    default: python
+    description: Python executable in the separate IE environment.
+  ie_repo:
+    type: string
+    default: ""
+    description: Local IE checkout directory.
+  model:
+    type: string
+    default: ""
+    description: Path to an existing local GGUF file.
+  llama_server:
+    type: string
+    default: ""
+    description: Path to the installed llama-server executable.
+  mock:
+    type: boolean
+    default: false
+    description: Use the IE mock provider with a loopback coordinator.
+  provider_token:
+    type: secret
+    env_var: IE_PROVIDER_TOKEN
+    description: Provider credential. Read through the active Hermes secret scope.

@@ -51,3 +51,14 @@ The plugin does not replace or patch Hermes methods.
 Catalog admission needs a human maintainer review.
 The demo video and hackathon form need the project owner.
 The issue does not establish whether the hackathon needs a merged catalog PR.
+
+## Verification
+
+`tests/test_lifecycle.py` checks the idle controller, configuration, controls,
+credential isolation, mock registration, drain, shutdown, and coordinator failure.
+The mock tests launch the existing IE provider in a separate process.
+The tests do not establish native GPU behavior.
+The Hermes v0.23.0 validator checks manifest capabilities and public API use.
+Its Windows dependency preparation can fail on long upstream paths.
+The plugin declares no Python dependencies inside Hermes.
+The CI workflow runs the official validator on Linux.
