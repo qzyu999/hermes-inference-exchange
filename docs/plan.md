@@ -19,7 +19,7 @@ It does not change IE requirements or core code.
 
 ## Source findings
 
-IE reference commit: `0f0ce6c`.
+IE reference commit: `0f0ce6cefd4eff1bd9353cea40677769fbccd824`.
 
 - `ocip_agent/agent.py::main` starts the production provider.
   Use `python -m ocip_agent.agent --model MODEL.gguf --llama-server llama-server`.

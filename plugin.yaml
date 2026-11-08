@@ -55,5 +55,5 @@ config_schema:
     description: Use the IE mock provider with a loopback coordinator.
   provider_token:
     type: secret
-    env_var: IE_PROVIDER_TOKEN
+    env: IE_PROVIDER_TOKEN
     description: Provider credential. Read through the active Hermes secret scope.

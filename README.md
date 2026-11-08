@@ -19,8 +19,8 @@ Review the install scanner findings before you enable the plugin.
 The plugin starts a background thread and a provider process.
 
 Prepare IE in a separate environment.
-Follow the [IE provider guide](https://github.com/qzyu999/inference-exchange/blob/0f0ce6c/docs/guides/provider-l0-apple-silicon-preview.md).
-Use IE commit `0f0ce6c` for this release.
+Follow the [IE provider guide](https://github.com/qzyu999/inference-exchange/blob/0f0ce6cefd4eff1bd9353cea40677769fbccd824/docs/guides/provider-l0-apple-silicon-preview.md).
+Use IE commit `0f0ce6cefd4eff1bd9353cea40677769fbccd824` for this release.
 Install `llama-server` from its official source.
 Choose an existing local `.gguf` model.
 The plugin does not download a model or an executable.
